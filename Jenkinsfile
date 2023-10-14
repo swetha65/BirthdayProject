@@ -5,11 +5,11 @@ pipeline{
             steps{
                 deleteDir()
             }
-        stage("Clone Repo"){
+        }
+        stage("Run script"){
             steps{
                 sh "./scripts/BirthdayChecker.py"
             }
-        }
         }
     }
 }
