@@ -1,44 +1,20 @@
 # import required packages
 import datetime
-import smtplib
+import pandas as pd
 
-# your gmail credentials here
-GMAIL_ID = 'swetha1654@gmail.com'
-GMAIL_PWD = 'Swethas_47'
+def checkBirthday():
+	df = pd.read_excel("data\Birthdays.xlsx")
+	df = df.dropna()
+	birthday_dict = df.set_index("Name").T.to_dict("list")
+	today = datetime.datetime.now().strftime("%d/%m") # today date in format : DD-MM
+	numOfBirthdays = 0
+	birthdayList = []
+	for name in birthday_dict.keys():
+		if today == birthday_dict[name][0]:
+			numOfBirthdays += 1
+			birthdayList.append(name)
 
-# define a function for sending email
-def sendEmail(to, sub, msg):
+	return(numOfBirthdays,birthdayList)
 
-	# connection to gmail
-	gmail_obj = smtplib.SMTP('smtp.gmail.com', 587) 
-	
-	# starting the session
-	gmail_obj.starttls()	 
-	
-	# login using credentials
-	gmail_obj.login(GMAIL_ID, GMAIL_PWD) 
-	
-	# sending email
-	gmail_obj.sendmail(GMAIL_ID, to, 
-				f"Subject : {sub}\n\n{msg}") 
-	
-	# quit the session
-	gmail_obj.quit() 
-	
-	print("Email sent to " + str(to) + " with subject "
-		+ str(sub) + " and message :" + str(msg))
-	
-
-# driver code
-if __name__=="__main__":
-	
-	# today date in format : DD-MM
-	today = datetime.datetime.now().strftime("%d-%m") 
-	
-	# current year in format : YY
-	yearNow = datetime.datetime.now().strftime("%Y")
-	
-	msg = "Test Email : " + today											 
-
-	sendEmail("swetha6530@gmail.com", "Test Email",	msg) 
+checkBirthday()
 
