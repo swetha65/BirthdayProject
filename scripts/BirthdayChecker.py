@@ -6,9 +6,9 @@ import os
 def checkBirthday():
 	cur_path = os.path.dirname(__file__)
 	print(cur_path)
-	os.chdir("..") 
-	print(cur_path)
-	new_path = os.path.join(cur_path, "data")
+	pathlist = os.path.split(cur_path)
+	print(pathlist)
+	new_path = os.path.join(pathlist[0], "data")
 	print(new_path)
 	new_path = os.path.join(new_path,"Birthdays.xlsx")
 	print(new_path)
