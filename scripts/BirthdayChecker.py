@@ -1,9 +1,18 @@
 # import required packages
 import datetime
 import pandas as pd
+import os
 
 def checkBirthday():
-	df = pd.read_excel("data/Birthdays.xlsx")
+	cur_path = os.path.dirname(__file__)
+	print(cur_path)
+	os.chdir("..") 
+	print(cur_path)
+	new_path = os.path.join(cur_path, "data")
+	print(new_path)
+	new_path = os.path.join(new_path,"Birthdays.xlsx")
+	print(new_path)
+	df = pd.read_excel(new_path)
 	df = df.dropna()
 	birthday_dict = df.set_index("Name").T.to_dict("list")
 	today = datetime.datetime.now().strftime("%d/%m") # today date in format : DD-MM
