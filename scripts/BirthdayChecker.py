@@ -14,7 +14,7 @@ def checkBirthday():
 			numOfBirthdays += 1
 			birthdayList.append(name)
 
-	return(numOfBirthdays,birthdayList)
+	return([numOfBirthdays,birthdayList])
 
 checkBirthday()
 
