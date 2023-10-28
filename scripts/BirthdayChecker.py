@@ -3,7 +3,7 @@ import datetime
 import pandas as pd
 
 def checkBirthday():
-	df = pd.read_excel("data\Birthdays.xlsx")
+	df = pd.read_excel("data/Birthdays.xlsx")
 	df = df.dropna()
 	birthday_dict = df.set_index("Name").T.to_dict("list")
 	today = datetime.datetime.now().strftime("%d/%m") # today date in format : DD-MM
