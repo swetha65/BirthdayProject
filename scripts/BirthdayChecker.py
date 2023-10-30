@@ -21,5 +21,5 @@ def checkBirthday():
 
 	return(numOfBirthdays)
 
-checkBirthday()
+print(checkBirthday())
 
