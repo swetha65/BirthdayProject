@@ -23,7 +23,7 @@ jobs:
         run: birthday_dict=$(python scripts/BirthdayChecker.py)
 
       - name: Checking
-        run: echo "$num=3" >> $GITHUB_OUTPUT
+        run: echo "num=3" >> $GITHUB_OUTPUT
 
       - name: Print_Output
         run: echo "num value is ${{ steps.Checking.outputs.num }}"
