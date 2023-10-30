@@ -20,8 +20,8 @@ jobs:
           pip install pandas
 
       - name: Call_Script
-        run: echo python scripts/BirthdayChecker.py >> $GITHUB_OUTPUT
+        run: birthday_dict=$(python scripts/BirthdayChecker.py)
 
       - name: Print_Output
-        run: echo ${{ steps.Call_Script.outputs.* }}
+        run: echo ${{ steps.Call_Script.outputs.birthday_dict }}
 
