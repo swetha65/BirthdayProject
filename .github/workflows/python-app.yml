@@ -3,6 +3,8 @@ run-name: BirthdayPipeline for CP Team 🚀
 on: [push]
 jobs:
   build:
+    outputs:
+      output1: ${{ steps.step1.outputs.t }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo content
@@ -27,10 +29,13 @@ jobs:
 
       - name: Checking
         id: step1
-        run: |
-          output=$(echo "Hello World!")
-                  
+        run: echo "t=hello" >> $GITHUB_OUTPUT
         
       - name: Print_Output
-        run: echo "${{ steps.step1.outputs.output }}"
+        run: echo "${{ steps.step1.outputs }}"
 
+  sendemail:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - run: echo ${{ needs.build.outputs.output1 }}
