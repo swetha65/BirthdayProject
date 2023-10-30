@@ -5,13 +5,9 @@ import os
 
 def checkBirthday():
 	cur_path = os.path.dirname(__file__)
-	print(cur_path)
 	pathlist = os.path.split(cur_path)
-	print(pathlist)
 	new_path = os.path.join(pathlist[0], "data")
-	print(new_path)
 	new_path = os.path.join(new_path,"Birthdays.xlsx")
-	print(new_path)
 	df = pd.read_excel(new_path)
 	df = df.dropna()
 	birthday_dict = df.set_index("Name").T.to_dict("list")
