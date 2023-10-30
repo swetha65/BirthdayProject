@@ -19,8 +19,11 @@ jobs:
           pip install openpyxl
           pip install pandas
 
-      - name: Call_Script
-        run: birthday_dict=$(python scripts/BirthdayChecker.py)
+      - name: Call Script
+        id: callscript
+        run: |
+          birthday_dict=$(python scripts/BirthdayChecker.py)
+          echo "::set-output name=birthdaydict::$birthday_dict"
 
       - name: Checking
         id: step1
@@ -29,5 +32,5 @@ jobs:
           echo "::set-output name=changelog::$output"        
         
       - name: Print_Output
-        run: echo "${{ steps.step1.outputs.changelog }}"
+        run: echo "${{ steps.callscript.outputs.birthdaydict }}"
 
