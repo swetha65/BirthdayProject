@@ -4,8 +4,6 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      output: ${{ steps.Call_Script.outputs }}
     steps:
       - name: checkout repo content
         uses: actions/checkout@v2 # checkout the repository content
@@ -22,8 +20,8 @@ jobs:
           pip install pandas
 
       - name: Call_Script
-        run: python scripts/BirthdayChecker.py
+        run: output=$(python scripts/BirthdayChecker.py)
 
       - name: Print_Output
-        run: echo ${{ needs.build.outputs.output }}
+        run: echo ${{ steps.Call_Script.output }}
 
