@@ -23,8 +23,11 @@ jobs:
         run: birthday_dict=$(python scripts/BirthdayChecker.py)
 
       - name: Checking
-        run: echo "num=3" >> $GITHUB_OUTPUT
-
+        id: step1
+        run: |
+          output=$(echo "Hello World!")
+          echo "::set-output name=changelog::$output"        
+        
       - name: Print_Output
-        run: echo "num value is ${steps.Checking.outputs.num}"
+        run: echo "${{ steps.step1.outputs.changelog }}"
 
