@@ -23,7 +23,7 @@ jobs:
 
       - name: Call Script
         id: callscript
-        run: birthdaylist=$(python scripts/BirthdayChecker.py)
+        run: echo "birthdaylist=$(python scripts/BirthdayChecker.py)" >> $GITHUB_OUTPUT
 
       - name: Checking
         id: step1
