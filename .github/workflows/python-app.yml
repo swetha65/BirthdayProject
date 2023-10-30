@@ -24,3 +24,6 @@ jobs:
       - name: Call_Script
         run: python scripts/BirthdayChecker.py
 
+      - name: Print_Output
+        run: echo ${{ needs.build.outputs.output }}
+
