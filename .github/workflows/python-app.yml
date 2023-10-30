@@ -4,7 +4,7 @@ on: [push]
 jobs:
   build:
     outputs:
-      output1: ${{ steps.step1.outputs.t }}
+      output1: ${{ steps.callscript.outputs.birthdaylist }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo content
@@ -23,16 +23,11 @@ jobs:
 
       - name: Call Script
         id: callscript
-        run: |
-          birthday_dict=$(python scripts/BirthdayChecker.py)
-          echo "::set-output name=birthdaydict::$birthday_dict"
+        run: birthdaylist=$(python scripts/BirthdayChecker.py)
 
       - name: Checking
         id: step1
         run: echo "t=hello" >> $GITHUB_OUTPUT
-        
-      - name: Print_Output
-        run: echo "${{ steps.step1.outputs }}"
 
   sendemail:
     runs-on: ubuntu-latest
