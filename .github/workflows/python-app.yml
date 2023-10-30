@@ -29,8 +29,8 @@ jobs:
         id: step1
         run: |
           output=$(echo "Hello World!")
-          echo "::set-output name=changelog::$output"        
+                  
         
       - name: Print_Output
-        run: echo "${{ steps.callscript.outputs.birthdaydict }}"
+        run: echo "${{ steps.step1.outputs.output }}"
 
