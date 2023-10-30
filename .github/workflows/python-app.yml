@@ -26,5 +26,5 @@ jobs:
         run: echo "num=3" >> $GITHUB_OUTPUT
 
       - name: Print_Output
-        run: echo "num value is ${steps.Checking.num}"
+        run: echo "num value is ${steps.Checking.outputs.num}"
 
