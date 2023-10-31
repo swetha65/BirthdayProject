@@ -23,7 +23,7 @@ jobs:
 
       - name: Call Script
         id: callscript
-        run: echo "birthdaymessage=$(python scripts/BirthdayChecker.py)""
+        run: echo "birthdaymessage=$(python scripts/BirthdayChecker.py)"
 
   sendemail:
     runs-on: ubuntu-latest
