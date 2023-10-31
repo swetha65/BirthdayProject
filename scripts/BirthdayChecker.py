@@ -25,12 +25,7 @@ def fillTemplate():
 				name += "and " + birthdayList[1][i]
 			else:
 				name += birthdayList[1][i] + ", "
-	message = f'''
-Wishing you a very Happy Birthday {name}! May you be gifted with the biggest joys and never-ending bliss of life.
-
-Regards,
-CP Team
-'''	
+	message = f"Wishing you a very Happy Birthday {name}! May you be gifted with the biggest joys and never-ending bliss of life."
 	print(message)
 
 
@@ -54,5 +49,5 @@ def checkBirthday():
 
 	return [numOfBirthdays, birthdayList]
 
-print(fillTemplate())
+fillTemplate()
 
