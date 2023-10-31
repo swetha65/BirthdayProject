@@ -26,7 +26,7 @@ def fillTemplate():
 			else:
 				name += birthdayList[1][i] + ", "
 	message = f'''
-Wishing you a very Happy Birthday {name}! May you be gifted with life's biggest joys and never-ending bliss.
+Wishing you a very Happy Birthday {name}! May you be gifted with the biggest joys and never-ending bliss of life.
 
 Regards,
 CP Team

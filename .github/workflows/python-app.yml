@@ -28,7 +28,7 @@ jobs:
   sendemail:
     runs-on: ubuntu-latest
     needs: build
-    if: ${{ needs.build.outputs.message != "" }}
+    if: ${{ needs.build.outputs.message != '' }}
     steps:
       - name: Print Birthdays
         run: echo ${{ needs.build.outputs.message }}
