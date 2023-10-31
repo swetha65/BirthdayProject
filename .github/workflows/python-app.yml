@@ -41,4 +41,4 @@ jobs:
           subject: Birthday Reminder
           body: ${{ needs.build.outputs.message }}
           to: swetha6530@gmail.com
-          from: Swetha Swaminathan
+          from: Birthday Pipeline
