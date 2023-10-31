@@ -1,6 +1,8 @@
 name: BirthdayPipeline
 run-name: BirthdayPipeline for CP Team 🚀
-on: [push]
+on: 
+  schedule:
+    -cron: '0 0 * * *'
 jobs:
   build:
     outputs:
