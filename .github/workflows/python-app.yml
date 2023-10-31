@@ -38,11 +38,11 @@ jobs:
           secure: true
           username: ${{secrets.EMAIL_ID}}
           password: ${{secrets.PASSWORD}}
-          subject: Birthday Reminder
+          subject: Reminder to Celebrate Birthday!
           body: |
             ${{ needs.build.outputs.message }}
-            
+
             Regards,
             CP Team
-          to: swetha6530@gmail.com
-          from: Birthday Reminder App
+          to: swetha.swaminathan@hpe.com
+          from: Birthday Reminder
