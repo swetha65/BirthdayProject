@@ -30,5 +30,14 @@ jobs:
     needs: build
     if: ${{ needs.build.outputs.message != '' }}
     steps:
-      - name: Print Birthdays
-        run: echo ${{ needs.build.outputs.message }}
+      - name: Send some mail
+        uses: wadeww/send-email-action@master
+        with:
+          server_address: smtp.gmail.com
+          port: 465
+          username: ${{secrets.EMAIL_ID}}
+          password: ${{secrets.PASSWORD}}
+          subject: Birthday Reminder
+          body: ${{ needs.build.outputs.message }}
+          to: swetha6530@gmail.com
+          from: Me
