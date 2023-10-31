@@ -40,7 +40,7 @@ jobs:
           secure: true
           username: ${{secrets.EMAIL_ID}}
           password: ${{secrets.PASSWORD}}
-          subject: Reminder to Celebrate Birthday!
+          subject: Reminder to Celebrate Birthday
           body: |
             ${{ needs.build.outputs.message }}
 
