@@ -23,13 +23,7 @@ jobs:
 
       - name: Call Script
         id: callscript
-        run: |
-          {
-          echo "birthdaymessage=$(python scripts/BirthdayChecker.py)<<EOF" 
-          echo EOF
-          echo "Regards,<<EOF"
-          echo "CP Team<<EOF"
-          } >> $GITHUB_OUTPUT
+        run: echo "birthdaymessage=$(python scripts/BirthdayChecker.py)""
 
   sendemail:
     runs-on: ubuntu-latest
