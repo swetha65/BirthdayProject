@@ -30,9 +30,10 @@ jobs:
     needs: build
     if: ${{ needs.build.outputs.message != '' }}
     steps:
-      - name: Send some mail
-        uses: wadeww/send-email-action@master
+      - name: Send email
+        uses: dawidd6/action-send-mail@v2
         with:
+          connection_url: ${{secrets.MAIL_CONNECTION}}
           server_address: smtp.gmail.com
           port: 465
           username: ${{secrets.EMAIL_ID}}
@@ -40,4 +41,4 @@ jobs:
           subject: Birthday Reminder
           body: ${{ needs.build.outputs.message }}
           to: swetha6530@gmail.com
-          from: Me
+          from: Swetha Swaminathan
