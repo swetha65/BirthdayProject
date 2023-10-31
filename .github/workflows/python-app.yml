@@ -39,6 +39,10 @@ jobs:
           username: ${{secrets.EMAIL_ID}}
           password: ${{secrets.PASSWORD}}
           subject: Birthday Reminder
-          body: ${{ needs.build.outputs.message }}
+          body: |
+            ${{ needs.build.outputs.message }}
+            
+            Regards,
+            CP Team
           to: swetha6530@gmail.com
-          from: Birthday Pipeline
+          from: Birthday Reminder App
