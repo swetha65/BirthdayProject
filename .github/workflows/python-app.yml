@@ -25,6 +25,9 @@ jobs:
         id: callscript
         run: echo "birthdaymessage=$(python scripts/BirthdayChecker.py)" >> $GITHUB_OUTPUT
 
+      - name: echo
+        run: echo ${{ needs.build.outputs.message }}
+
   sendemail:
     runs-on: ubuntu-latest
     needs: build
