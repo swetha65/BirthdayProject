@@ -1,8 +1,6 @@
 name: BirthdayPipeline
 run-name: BirthdayPipeline for CP Team 🚀
-on: 
-  schedule:
-    - cron: '0 0 * * *'
+on: [push]
 jobs:
   build:
     outputs:
@@ -41,10 +39,6 @@ jobs:
           username: ${{secrets.EMAIL_ID}}
           password: ${{secrets.PASSWORD}}
           subject: Reminder to Celebrate Birthday
-          body: |
-            ${{ needs.build.outputs.message }}
-
-            Regards,
-            CP Team
+          html_body:  ${{ needs.build.outputs.message }}
           to: swetha.swaminathan@hpe.com
           from: Birthday Reminder

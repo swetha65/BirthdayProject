@@ -3,14 +3,21 @@ import datetime
 import pandas as pd
 import os
 
-template = '''
-Wishing you a very Happy Birthday {{name}}! May you be gifted with life's biggest joys and never-ending bliss.
+def prepareTemplate():
+	name = getnameString()
+	if name == "":
+		return ""
+	else:
+		cur_path = os.path.dirname(__file__)
+		pathlist = os.path.split(cur_path)
+		new_path = os.path.join(pathlist[0], "templates")
+		new_path = os.path.join(new_path,"birthdaytemplate.html")
+		with open(new_path, "r") as f:
+			body = f.read()
+			body = body.replace("birthday_names", name)
+		print(body)
 
-Regards,
-CP Team
-'''
-
-def fillTemplate():
+def getnameString():
 	birthdayList = checkBirthday()
 	if birthdayList[0] == 0:
 		return ""
@@ -25,8 +32,7 @@ def fillTemplate():
 				name += "and " + birthdayList[1][i]
 			else:
 				name += birthdayList[1][i] + ", "
-	message = f"Wishing you a very Happy Birthday {name}! May you be gifted with the biggest joys and never-ending bliss of life."
-	print(message)
+	return name
 
 
         
@@ -49,5 +55,5 @@ def checkBirthday():
 
 	return [numOfBirthdays, birthdayList]
 
-fillTemplate()
 
+prepareTemplate()
