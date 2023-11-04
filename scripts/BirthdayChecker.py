@@ -6,16 +6,18 @@ import os
 def prepareTemplate():
 	name = getnameString()
 	if name == "":
-		return ""
+		return False
 	else:
 		cur_path = os.path.dirname(__file__)
-		pathlist = os.path.split(cur_path)
-		new_path = os.path.join(pathlist[0], "templates")
-		new_path = os.path.join(new_path,"birthdaytemplate.html")
+		new_path_dir = os.path.join(os.path.split(cur_path)[0], "templates")
+		new_path = os.path.join(new_path_dir,"birthdaytemplate.html")
 		with open(new_path, "r") as f:
 			body = f.read()
 			body = body.replace("birthday_names", name)
-		print(body)
+		final_template = os.path.join(new_path_dir,"birthdaytemplatereplaced.html")
+		with open(final_template, "w") as f:
+			f.write(body)
+		return True
 
 def getnameString():
 	birthdayList = checkBirthday()
