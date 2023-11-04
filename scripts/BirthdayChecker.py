@@ -58,4 +58,4 @@ def checkBirthday():
 	return [numOfBirthdays, birthdayList]
 
 
-prepareTemplate()
+print(prepareTemplate())
