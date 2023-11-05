@@ -3,22 +3,6 @@ import datetime
 import pandas as pd
 import os
 
-def prepareTemplate():
-	name = getnameString()
-	if name == "":
-		return ""
-	else:
-		cur_path = os.path.dirname(__file__)
-		new_path_dir = os.path.join(os.path.split(cur_path)[0], "templates")
-		new_path = os.path.join(new_path_dir,"birthdaytemplate.html")
-		with open(new_path, "r") as f:
-			body = f.read()
-			body = body.replace("birthday_names", name)
-		final_template = os.path.join(new_path_dir,"birthdaytemplatereplaced.html")
-		with open(final_template, "w") as f:
-			f.write(body)
-		return final_template
-
 def getnameString():
 	birthdayList = checkBirthday()
 	if birthdayList[0] == 0:
@@ -58,4 +42,4 @@ def checkBirthday():
 	return [numOfBirthdays, birthdayList]
 
 
-print(prepareTemplate())
+print(getnameString())
