@@ -15,6 +15,7 @@ def prepareTemplate():
 		with open(new_path, "r") as f:
 			body = f.read()
 			body = body.replace("birthday_names", name)
+			body = body.replace("img_path", img_path)
 		final_template = os.path.join(new_path_dir,"birthdaytemplatereplaced.html")
 		with open(final_template, "w") as f:
 			f.write(body)
