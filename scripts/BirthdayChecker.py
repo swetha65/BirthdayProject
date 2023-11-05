@@ -6,7 +6,7 @@ import os
 def prepareTemplate():
 	name = getnameString()
 	if name == "":
-		return "False"
+		return ""
 	else:
 		cur_path = os.path.dirname(__file__)
 		new_path_dir = os.path.join(os.path.split(cur_path)[0], "templates")
@@ -17,7 +17,7 @@ def prepareTemplate():
 		final_template = os.path.join(new_path_dir,"birthdaytemplatereplaced.html")
 		with open(final_template, "w") as f:
 			f.write(body)
-		return "True"
+		return final_template
 
 def getnameString():
 	birthdayList = checkBirthday()

@@ -37,7 +37,7 @@ jobs:
   sendemail:
     runs-on: ubuntu-latest
     needs: build
-    if: ${{ needs.build.outputs.message == 'True' }}
+    if: ${{ needs.build.outputs.message }}
     steps:
       - name: Send email
         uses: dawidd6/action-send-mail@v3
@@ -48,6 +48,6 @@ jobs:
           username: ${{secrets.EMAIL_ID}}
           password: ${{secrets.PASSWORD}}
           subject: Reminder to Celebrate Birthday
-          html_body:  file://templates/birthdaytemplatereplaced.html
+          html_body:  file://${{ needs.build.outputs.message }}
           to: swetha.swaminathan@hpe.com
           from: Birthday Reminder
