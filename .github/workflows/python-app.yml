@@ -39,6 +39,12 @@ jobs:
     needs: build
     if: ${{ needs.build.outputs.message }}
     steps:
+      - name: ls
+        run: ls
+
+      - name: pwd
+        run: pwd
+
       - name: Send email
         uses: dawidd6/action-send-mail@v3
         with:
