@@ -28,7 +28,7 @@ jobs:
         run: ls templates/
 
       - name: cat
-        run: cat /templates/birthdaytemplatereplaced.html
+        run: cat templates/birthdaytemplatereplaced.html
 
       - name: Count Files
         id: count_files
