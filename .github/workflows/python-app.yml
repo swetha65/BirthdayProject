@@ -3,8 +3,6 @@ run-name: BirthdayPipeline for CP Team 🚀
 on: [push]
 jobs:
   build:
-    outputs:
-      message: ${{ steps.callscript.outputs.birthdaymessage }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo content
@@ -23,45 +21,15 @@ jobs:
 
       - name: Call Script
         id: callscript
-        run: echo "birthdaymessage=$(python scripts/BirthdayChecker.py)" >> $GITHUB_OUTPUT
-
-      - name: echo
-        run: echo "${{ needs.build.outputs.message }}"
-
-      - name: ls
-        run: ls templates/
-
-      - name: pwd
-        run: pwd
-
-      
-
-  sendemail:
-    runs-on: ubuntu-latest
-    needs: build
-    if: ${{ needs.build.outputs.message != '' }}
-    steps:
-      - name: checkout repo content
-        uses: actions/checkout@v2 # checkout the repository content
-
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.10"
+        run: |
+          birthdaymessage=$(python scripts/BirthdayChecker.py)
+          echo "::set-output name=my_output::$birthdaymessage"
 
       - name: ls
         run: ls templates/
-
-      - name: pwd
-        run: pwd
-
-      - name: Call Template.py
-        run: python scripts/Template.py
-
-      - name: ls
-        run: ls templates/ 
 
       - name: Send email
+        if: steps.callscript.outputs.my_output == 'true'
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
