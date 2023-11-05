@@ -1,6 +1,8 @@
 name: BirthdayPipeline
 run-name: BirthdayPipeline for CP Team 🚀
-on: [push]
+on: 
+  cron:
+    - '0 0 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,12 +26,6 @@ jobs:
         run: |
           birthdaymessage=$(python scripts/BirthdayChecker.py)
 
-      - name: ls
-        run: ls templates/
-
-      - name: cat
-        run: cat templates/birthdaytemplatereplaced.html
-
       - name: Count Files
         id: count_files
         run: |
@@ -37,7 +33,7 @@ jobs:
           echo "::set-output name=directory_count::$directory_count"
 
       - name: Send email
-        if: ${{ steps.count_files.outputs.directory_count > 2}}
+        if: ${{ steps.count_files.outputs.directory_count > 1}}
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -47,5 +43,5 @@ jobs:
           password: ${{secrets.PASSWORD}}
           subject: Reminder to Celebrate Birthday
           html_body:  file://templates/birthdaytemplatereplaced.html
-          to: swetha6530@gmail.com
+          to: swetha6530@gmail.com, swetha.swaminathan@hpe.com
           from: Birthday Reminder
