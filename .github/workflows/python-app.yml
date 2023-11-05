@@ -23,13 +23,12 @@ jobs:
         id: callscript
         run: |
           birthdaymessage=$(python scripts/BirthdayChecker.py)
-          echo "::set-output name=my_output::$birthdaymessage"
 
       - name: ls
         run: ls templates/
 
       - name: Send email
-        if: steps.callscript.outputs.my_output == 'true'
+        if: ${{ $(ls templates/ | wc -l) -gt 1}}
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
