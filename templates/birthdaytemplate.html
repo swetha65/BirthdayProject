@@ -3,13 +3,12 @@
 <head>
     <title>Happy Birthday!</title>
     <style>
+        /* Move CSS styles inline where necessary */
         body {
-            
-            background-size: cover;
+            background-color: radial-gradient(#ffdb58, #ffab40); /* Fallback background color for Outlook */
             font-family: 'Pacifico', cursive;
             text-align: center;
             color: #141414;
-            background-color: rgba(255, 255, 255, 0.1)
         }
         h1 {
             font-size: 48px;
@@ -26,7 +25,13 @@
         }
     </style>
 </head>
-<body v:background="url('img_path')">
+<body>
+    <!--[if gte mso 9]>
+    <v:rect xmlns:w="urn:schemas-microsoft-com:office:word" fill="t">
+    <v:fill type="tile" src="img_path" color="#your-color"/>
+    </v:rect>
+    <![endif]-->
+
     <h1>Happy Birthday, birthday_names!</h1>
     <p>May your special day be filled with joy, love, and lots of amazing memories. Cheers to another wonderful year ahead!</p>
     <p>Regards,</p>
