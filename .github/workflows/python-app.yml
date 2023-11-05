@@ -37,7 +37,7 @@ jobs:
           echo "::set-output name=directory_count::$directory_count"
 
       - name: Send email
-        if: ${{ steps.count_files.outputs.directory_count > 1}}
+        if: ${{ steps.count_files.outputs.directory_count > 2}}
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
