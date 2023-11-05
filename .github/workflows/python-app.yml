@@ -30,14 +30,14 @@ jobs:
 
       - name: ls
         run: ls
-        
+
       - name: pwd
         run: pwd
 
   sendemail:
     runs-on: ubuntu-latest
     needs: build
-    if: ${{ needs.build.outputs.message == "True" }}
+    if: ${{ needs.build.outputs.message == 'True' }}
     steps:
       - name: Send email
         uses: dawidd6/action-send-mail@v3
