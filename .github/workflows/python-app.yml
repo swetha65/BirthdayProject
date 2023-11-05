@@ -27,8 +27,14 @@ jobs:
       - name: ls
         run: ls templates/
 
+      - name: Count Files
+        id: count_files
+        run: |
+          directory_count=$(ls templates/ | wc -l)
+          echo "::set-output name=directory_count::$directory_count"
+
       - name: Send email
-        if: ${{ $(ls templates/ | wc -l) -gt 1}}
+        if: ${{ steps.count_files.outputs.directory_count > 1}}
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
