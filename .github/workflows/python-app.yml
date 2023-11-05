@@ -48,6 +48,6 @@ jobs:
           username: ${{secrets.EMAIL_ID}}
           password: ${{secrets.PASSWORD}}
           subject: Reminder to Celebrate Birthday
-          html_body:  file://${{ needs.build.outputs.message }}
+          html_body:  file://birthdaytemplatereplaced.html
           to: swetha.swaminathan@hpe.com
           from: Birthday Reminder
