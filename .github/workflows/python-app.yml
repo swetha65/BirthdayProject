@@ -43,5 +43,5 @@ jobs:
           password: ${{secrets.PASSWORD}}
           subject: Reminder to Celebrate Birthday
           html_body:  file://templates/birthdaytemplatereplaced.html
-          to: glcs.team-zenith@hpe.com, glcs.team-andromeda@hpe.com
+          to: glcs.team-zenith@hpe.com, glcs.team-andromeda@hpe.com, glcs.team-udaan@hpe.com, glcs.team-vimaan@hpe.com
           from: Birthday Reminder
