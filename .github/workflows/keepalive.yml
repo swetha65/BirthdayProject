@@ -1,7 +1,7 @@
 name: Github Action with a cronjob trigger
-on:
-  schedule:
-    - cron: "0 0 * * *"
+# on:
+#   schedule:
+#     - cron: "0 0 * * *"
 jobs:
   main-job:
     name: Main Job
